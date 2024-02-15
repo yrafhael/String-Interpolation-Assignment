@@ -13,6 +13,19 @@
             Console.WriteLine("Invalid choice.");
             return;
         }
+
+        switch (choice)
+        {
+            case 1:
+                CreateDataFile();
+                break;
+            case 2:
+                ParseDataFile();
+                break;
+            default:
+                Console.WriteLine("Invalid choice.");
+                break;
+        }
     }
 
 
