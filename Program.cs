@@ -86,7 +86,7 @@
                 // Print each data item (day)
                 for (int i = 0; i < parts.Length; i++)
                 {
-                    Console.Write($"{parts[i],2} "); /
+                    Console.Write($"{parts[i],2} ");
                     if ((i + 1) % 7 == 0)
                         Console.WriteLine();
                 }
