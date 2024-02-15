@@ -40,4 +40,45 @@
 
         Console.WriteLine("Data file created.");
     }
+
+    static void ParseDataFile()
+    {
+        // checking if the file exists
+        if (!File.Exists("dataGenerate.txt"))
+        {
+            Console.WriteLine("Data file does not exist.");
+            return;
+        }
+
+        //read and display data from the data file
+        using (StreamReader reader = new StreamReader("dataGenerate.txt"))
+        {
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                // If the line starts with "Week of", it contains the date, so skip it
+                if (line.StartsWith("Week of"))
+                {
+                    //give back the date
+                    Console.WriteLine(line); 
+                    continue; 
+                }
+
+                //formatting the line using coma
+                string[] parts = line.Split(',');
+                // Print the days of the week header
+                Console.WriteLine(" Su Mo Tu We Th Fr Sa");
+                Console.WriteLine(" -- -- -- -- -- -- --");
+
+                // Print each data item (day)
+                for (int i = 0; i < parts.Length; i++)
+                {
+                    Console.Write($"{parts[i],2} "); /
+                    if ((i + 1) % 7 == 0)
+                        Console.WriteLine();
+                }
+                Console.WriteLine();
+            }
+        }
+    }
 }
